@@ -3,10 +3,6 @@
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=L2ML7F8DTMAT2&currency_code=USD&source=ur" target="_blank">
     <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="PayPal">
   </a>
-  <img src="https://static.pepy.tech/personalized-badge/mmpm?period=total&units=abbreviation&left_color=grey&right_color=blue&left_text=Downloads">
-  <a href="https://pypi.org/project/mmpm" target="_blank">
-    <img src="https://img.shields.io/pypi/v/mmpm.svg" alt="PyPI version">
-  </a>
   <!-- badges end -->
 
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=L2ML7F8DTMAT2&currency_code=USD&source=ur" target="_blank">
