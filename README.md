@@ -18,19 +18,8 @@
 MagicMirror modules. This module requires `mmpm` and MagicMirror to be installed. For instructions
 on installing `mmpm`, see [https://github.com/Bee-Mar/mmpm](https://github.com/Bee-Mar/mmpm).
 
-## Installation
+## Installation/Removal
 
-Either use the MMPM GUI Marketplace to install this module or run the following:
+See the related [MMPM Wiki](https://github.com/Bee-Mar/mmpm/wiki/Status,-Hide,-Show-MagicMirror-Modules) page for
+instructions.
 
-
-```sh
-mmpm install MMM-mmpm
-```
-
-## Removal
-
-Either use the MMPM GUI Marketplace to install this module or run the following:
-
-```sh
-mmpm remove MMM-mmpm
-```
