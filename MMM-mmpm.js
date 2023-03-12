@@ -1,10 +1,10 @@
-Module.register("mmpm", {
+Module.register("MMM-mmpm", {
 	defaults: {
 		refreshInterval: 0
 	},
 
 	start: function () {
-		console.log("Starting module: mmpm");
+		console.log("Starting module: MMM-mmpm");
 		// doesn't matter what's sent through the socket, need something to initalize the node_helper
 		this.sendSocketNotification("MMPM_START");
 	},
