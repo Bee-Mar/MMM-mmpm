@@ -9,7 +9,7 @@ Module.register("MMM-mmpm", {
 		this.sendSocketNotification("MMPM_START");
 	},
 
-	 modifyModuleVisibility: function (payload) {
+	modifyModuleVisibility: function (payload) {
 		let modules = MM.getModules();
 
 		for (let index = 0; index < payload.modules.length; index++) {
@@ -37,7 +37,7 @@ Module.register("MMM-mmpm", {
 					activeModules.push({
 						name: modules[index].name,
 						hidden: modules[index].hidden,
-						index,
+						key: index,
 					});
 				}
 			}
