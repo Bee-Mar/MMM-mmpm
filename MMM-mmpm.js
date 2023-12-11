@@ -1,4 +1,6 @@
-Module.register("MMM-mmpm", {
+const _module_name = "MMM-mmpm";
+
+Module.register(_module_name, {
 	defaults: {
 		refreshInterval: 0
 	},
@@ -33,7 +35,7 @@ Module.register("MMM-mmpm", {
 			const modules = MM.getModules();
 
 			for (let index = 0; index < modules.length; index++) {
-				if (modules[index] && modules[index].name.toLowerCase() !== "mmpm") {
+				if (modules[index] && modules[index].name.toLowerCase() !== _module_name) {
 					activeModules.push({
 						name: modules[index].name,
 						hidden: modules[index].hidden,
