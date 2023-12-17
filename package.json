@@ -1,0 +1,22 @@
+{
+  "name": "MMM-mmpm",
+  "version": "1.0.0",
+  "description": "A brief description of your project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bee-mar/MMM-mmpm.git"
+  },
+  "keywords": [
+    "magicmirror",
+    "module",
+    "mmpm",
+    "magicmirror-package-manager",
+    "package-manager"
+  ],
+  "author": "Brandon Marlowe <bpmarlowe-software@protonmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bee-mar/MMM-mmpm/issues"
+  },
+  "homepage": "https://github.com/bee-mar/MMM-mmpm#readme"
+}
