@@ -1,60 +1,47 @@
 const _module_name = "MMM-mmpm";
 
 Module.register(_module_name, {
-	defaults: {
-		refreshInterval: 0
-	},
+  defaults: {},
 
-	start: function () {
-		console.log("Starting module: MMM-mmpm");
-		// doesn't matter what's sent through the socket, need something to initalize the node_helper
-		this.sendSocketNotification("MMPM_START");
-	},
+  start: function () {
+    console.log(`Starting module: ${_module_name}`);
+    this.sendSocketNotification("MMPM_START");
+  },
 
-	modifyModuleVisibility: function (payload) {
-		let modules = MM.getModules();
+  getActiveModules: function () {
+    const activeModules = [];
+    const modules = MM.getModules();
 
-		for (let index = 0; index < payload.modules.length; index++) {
-			const moduleIndex = parseInt(payload.modules[index]) - 1;
+    for (let index = 0; index < modules.length; index++) {
+      activeModules.push({name: modules[index].name, hidden: modules[index].hidden, key: index + 1});
+    }
 
-			if (payload.directive === "hide") {
-				modules[moduleIndex].hide();
-			} else {
-				modules[moduleIndex].show();
-			}
-		}
+    return activeModules;
+  },
 
-		return payload;
-	},
+  modifyModuleVisibility: function (payload) {
+    const modules = MM.getModules();
 
-	socketNotificationReceived: function (notification, payload) {
-		if (notification === "FROM_MMPM_NODE_HELPER_get_active_modules") {
-			Log.log("MMPM module received request to retreive active modules list");
+    for (const index = 0; index < payload.modules.length; index++) {
+      const moduleIndex = parseInt(payload.modules[index]) - 1;
 
-			let activeModules = [];
-			const modules = MM.getModules();
+      if (payload.directive === "hide") {
+        modules[moduleIndex].hide();
+      } else {
+        modules[moduleIndex].show();
+      }
+    }
+  },
 
-			for (let index = 0; index < modules.length; index++) {
-				if (modules[index] && modules[index].name.toLowerCase() !== _module_name) {
-					activeModules.push({
-						name: modules[index].name,
-						hidden: modules[index].hidden,
-						key: index,
-					});
-				}
-			}
+  socketNotificationReceived: function (notification, payload) {
+    if (notification === "FROM_MMPM_NODE_HELPER_get_active_modules") {
+      Log.log("MMPM module received request to retreive active modules list");
+      this.sendSocketNotification("FROM_MMPM_MODULE_active_modules", this.getActiveModules());
 
-			Log.log("MMPM module finished retreival list of active modules");
-			Log.log("MMPM module sending back list of active modules to MMPM application");
-			this.sendSocketNotification("FROM_MMPM_MODULE_active_modules", activeModules);
-		} else if (notification === "FROM_MMPM_NODE_HELPER_toggle_modules") {
-			Log.log(`MMPM module received request to hide ${payload} module`);
-
-			let result = this.modifyModuleVisibility(payload);
-
-			Log.log(`MMPM module finished hiding ${payload} module`);
-			Log.log("MMPM module sending back modules to MMPM application");
-			this.sendSocketNotification("FROM_MMPM_MODULE_modules_toggled", result);
-		}
-	}
+    } else if (notification === "FROM_MMPM_NODE_HELPER_toggle_modules") {
+      Log.log(`MMPM module received request to toggle ${payload} module`);
+      this.modifyModuleVisibility(payload);
+      this.sendSocketNotification("FROM_MMPM_MODULE_modules_toggled", this.getActiveModules());
+    }
+  }
 });
