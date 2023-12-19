@@ -14,7 +14,7 @@ Module.register(_module_name, {
 		const modules = MM.getModules();
 
 		for (let index = 0; index < modules.length; index++) {
-			activeModules.push({name: modules[index].name, hidden: modules[index].hidden, key: index + 1});
+			activeModules.push({name: modules[index].name, hidden: modules[index].hidden, key: index});
 		}
 
 		return activeModules;
