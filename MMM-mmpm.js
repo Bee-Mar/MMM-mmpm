@@ -23,7 +23,7 @@ Module.register(_module_name, {
 	modifyModuleVisibility: function (payload) {
 		const modules = MM.getModules();
 
-		for (const index = 0; index < payload.modules.length; index++) {
+		for (let index = 0; index < payload.modules.length; index++) {
 			const moduleIndex = parseInt(payload.modules[index]) - 1;
 
 			if (payload.directive === "hide") {
